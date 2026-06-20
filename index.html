@@ -17,160 +17,57 @@
             --accent-hover: #52a856; 
             --border-radius: 12px;
         }
-        body {
-            margin: 0;
-            font-family: 'Helvetica Neue', Arial, 'LiHei Pro', '微軟正黑體', sans-serif;
-            background-color: var(--primary-bg);
-            color: var(--text-main);
-        }
+        body { margin: 0; font-family: 'Helvetica Neue', Arial, 'LiHei Pro', '微軟正黑體', sans-serif; background-color: var(--primary-bg); color: var(--text-main); }
+        header { background-color: var(--header-bg); color: var(--header-text); text-align: center; padding: 50px 20px 40px; box-shadow: 0 4px 15px rgba(43, 93, 42, 0.08); display: flex; flex-direction: column; align-items: center; }
+        .header-logo { width: 140px; height: auto; margin-bottom: 20px; }
+        header h1 { margin: 0; font-size: 2.2rem; letter-spacing: 2px; font-weight: 800; }
+        header p { color: #637b64; margin-top: 12px; font-size: 1.1rem; font-weight: 500; }
 
-        /* 頂部 Header */
-        header {
-            background-color: var(--header-bg);
-            color: var(--header-text);
-            text-align: center;
-            padding: 50px 20px 40px;
-            box-shadow: 0 4px 15px rgba(43, 93, 42, 0.08); 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .header-logo {
-            width: 140px; 
-            height: auto;
-            margin-bottom: 20px;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.2rem;
-            letter-spacing: 2px;
-            font-weight: 800;
-        }
-        header p {
-            color: #637b64; 
-            margin-top: 12px;
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        /* 迎賓解鎖表單區塊 (Gatekeeper) */
-        #welcome-gate {
-            max-width: 600px;
-            margin: 40px auto;
-            padding: 32px;
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 25px rgba(43, 93, 42, 0.15);
-            text-align: center;
-            border-top: 5px solid var(--accent-color);
-        }
-        #welcome-gate h2 {
-            color: var(--header-text);
-            margin-top: 0;
-        }
-        #welcome-gate p {
-            color: var(--text-muted);
-            margin-bottom: 24px;
-            line-height: 1.6;
-        }
+        /* 迎賓解鎖表單 */
+        #welcome-gate { max-width: 600px; margin: 40px auto; padding: 32px; background: var(--card-bg); border-radius: var(--border-radius); box-shadow: 0 10px 25px rgba(43, 93, 42, 0.15); text-align: center; border-top: 5px solid var(--accent-color); }
+        #welcome-gate h2 { color: var(--header-text); margin-top: 0; }
+        #welcome-gate p { color: var(--text-muted); margin-bottom: 24px; line-height: 1.6; }
 
         /* 卡片網格區塊 (預設隱藏) */
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-            display: none; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            animation: fadeIn 0.8s ease-in-out; 
-        }
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; display: none; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; animation: fadeIn 0.8s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* 原本的卡片樣式 */
-        .card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 24px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
-            position: relative;
-            border: 2px solid transparent;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(43, 93, 42, 0.15);
-            border: 2px solid var(--accent-hover); 
-        }
+        /* 卡片樣式 */
+        .card { background: var(--card-bg); border-radius: var(--border-radius); padding: 24px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease; position: relative; border: 2px solid transparent; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(43, 93, 42, 0.15); border: 2px solid var(--accent-hover); }
         .card-icon { font-size: 2.5rem; margin-bottom: 16px; }
         .card-title { font-size: 1.25rem; font-weight: bold; margin-bottom: 8px; color: var(--header-text); }
         .card-author { font-size: 0.9rem; color: var(--accent-color); margin-bottom: 12px; font-weight: bold; }
-        .card-desc {
-            font-size: 0.95rem; color: var(--text-muted); line-height: 1.5;
-            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
-        }
+        .card-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
         /* 彈出視窗 Modal */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.6); display: none; justify-content: center; align-items: center;
-            z-index: 1000; padding: 20px; box-sizing: border-box;
-        }
-        .modal-content {
-            background: white; width: 100%; max-width: 600px; border-radius: var(--border-radius);
-            padding: 32px; position: relative; max-height: 90vh; overflow-y: auto;
-        }
-        .close-btn {
-            position: absolute; top: 20px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #999; border: none; background: none;
-        }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px; box-sizing: border-box; }
+        .modal-content { background: white; width: 100%; max-width: 600px; border-radius: var(--border-radius); padding: 32px; position: relative; max-height: 90vh; overflow-y: auto; }
+        .close-btn { position: absolute; top: 20px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #999; border: none; background: none; }
         .close-btn:hover { color: var(--accent-color); }
         .modal-title-text { color: var(--header-text); margin-top: 0; }
 
-        /* 按鈕與表單共用樣式 */
-        .btn-visit {
-            display: inline-block; background-color: var(--accent-color); color: white; text-decoration: none;
-            padding: 10px 24px; border-radius: 8px; font-weight: bold; margin-top: 16px; margin-bottom: 28px;
-            transition: background 0.2s;
-        }
+        /* 按鈕與表單樣式 */
+        .btn-visit { display: inline-block; background-color: var(--accent-color); color: white; text-decoration: none; padding: 10px 24px; border-radius: 8px; font-weight: bold; margin-top: 16px; margin-bottom: 28px; transition: background 0.2s; }
         .btn-visit:hover { background-color: var(--accent-hover); }
-        
-        .feedback-form {
-            background: var(--primary-bg); padding: 24px; border-radius: 8px; border: 1px solid #d4e0d4; text-align: left;
-        }
+        .feedback-form { background: var(--primary-bg); padding: 24px; border-radius: 8px; border: 1px solid #d4e0d4; text-align: left; }
         .feedback-form h3 { color: var(--header-text); margin-top: 0; }
         .form-group { margin-bottom: 16px; text-align: left; }
-        .form-group label {
-            display: block; margin-bottom: 6px; font-weight: bold; font-size: 0.95rem; color: var(--text-main);
-        }
-        .form-group input, .form-group textarea {
-            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit;
-            box-sizing: border-box; font-size: 1rem;
-        }
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none; border-color: var(--accent-hover); box-shadow: 0 0 0 2px rgba(82, 168, 86, 0.2);
-        }
-        .btn-submit {
-            background-color: var(--accent-color); color: white; border: none; padding: 12px 20px;
-            border-radius: 6px; cursor: pointer; width: 100%; font-size: 1.1rem; font-weight: bold;
-            transition: background 0.2s;
-        }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: bold; font-size: 0.95rem; color: var(--text-main); }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; box-sizing: border-box; font-size: 1rem; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-hover); box-shadow: 0 0 0 2px rgba(82, 168, 86, 0.2); }
+        .btn-submit { background-color: var(--accent-color); color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; width: 100%; font-size: 1.1rem; font-weight: bold; transition: background 0.2s; }
         .btn-submit:hover { background-color: var(--accent-hover); }
     </style>
 </head>
 <body>
 
-    <!-- 頂部標題區 -->
     <header>
         <img src="https://drive.google.com/thumbnail?id=1cGeHkoUrIdFwQgBLncQPrpeiA9bQe9i_&sz=w1000" alt="鹿角科技共享圈 Logo" class="header-logo">
         <h1>鹿角科技共享圈 成果展</h1>
         <p>探索本季學員的 MVP 專案與開發心得</p>
     </header>
 
-    <!-- 🌟 更新後的迎賓解鎖表單 -->
     <div id="welcome-gate">
         <h2>👋 歡迎來到成果展</h2>
         <p>在開始探索之前，想先了解一下您的數位使用習慣，讓我們交流時更有共鳴！</p>
@@ -187,10 +84,8 @@
         </form>
     </div>
 
-    <!-- 卡片展示區 (預設隱藏，解鎖後才會變成 display: grid) -->
     <div class="container" id="project-container"></div>
 
-    <!-- 彈出視窗 (Modal) - 體驗後的個別回饋表單 -->
     <div class="modal-overlay" id="modal">
         <div class="modal-content">
             <button class="close-btn" id="close-modal">&times;</button>
@@ -199,23 +94,30 @@
             <p id="modal-desc" style="line-height: 1.6; color: #555;">作品詳細描述</p>
             <a href="#" target="_blank" class="btn-visit" id="modal-link">前往體驗作品 &rarr;</a>
 
-            <!-- 體驗後的交流表單 -->
             <div class="feedback-form">
-                <h3>💡 體驗後交流與回饋</h3>
+                <h3>💡 體驗後交流與回饋 (WLPA 復盤)</h3>
                 <form id="interaction-form">
                     <div class="form-group">
                         <label for="userName">您的稱呼 (暱稱可)</label>
                         <input type="text" id="userName" required placeholder="想怎麼稱呼您呢？">
                     </div>
                     <div class="form-group">
-                        <label for="scenario">體驗過後，您覺得會在什麼情境下使用它？</label>
-                        <textarea id="scenario" rows="3" placeholder="例如：在備課時、帶學生實作時..."></textarea>
+                        <label for="well">🌟 Well (學習亮點)</label>
+                        <textarea id="well" rows="2" placeholder="這份作品最吸引您、做得最好的地方是？" required></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="painpoint">還有什麼未被解決的痛點或優化建議嗎？</label>
-                        <textarea id="painpoint" rows="3" placeholder="例如：希望可以新增...的功能"></textarea>
+                        <label for="lessWell">🌱 Less Well (潛力點)</label>
+                        <textarea id="lessWell" rows="2" placeholder="您覺得哪裡還有強化、改進的空間？"></textarea>
                     </div>
-                    <button type="submit" class="btn-submit">送出回饋給作者</button>
+                    <div class="form-group">
+                        <label for="puzzle">🤔 Puzzle (難點/疑惑)</label>
+                        <textarea id="puzzle" rows="2" placeholder="體驗過程中，有遇到什麼卡關或困惑嗎？"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="action">🚀 Action (行動建議)</label>
+                        <textarea id="action" rows="2" placeholder="對創作者下一步迭代有什麼具體建議？"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">送出 WLPA 復盤給作者</button>
                 </form>
             </div>
         </div>
@@ -223,29 +125,12 @@
 
     <script>
         const projects = [
-            {
-                id: 'jing', author: '晶晶', title: '英文互動教學鷹架與遊戲', icon: '🎮',
-                link: 'https://padlet.com/mlvsmlc/20260629-ai-column-b9ov1sbzl16ugf01',
-                desc: '運用 AI 輔助設計的英文科教案、學習鷹架與互動式小遊戲。將課文內容與語法餵給 AI，生成海洋主題對話或校刊專訪改錯等互動遊戲，並成功將傳統紙本學習單轉化為可互動的網頁。'
-            },
-            {
-                id: 'miao', author: '妙妙', title: '航海米茶號：生涯探索遊戲', icon: '⛵',
-                link: 'https://service-374180143495.asia-south1.run.app/',
-                desc: '與學校生涯老師合作開發的航海主題「生涯探索遊戲」。玩家搭乘代表 Life 的「米茶號」，透過登陸對應創造、挑戰、連結、發現、實踐等面向的島嶼並做出選擇，深度探索個人興趣與特質。'
-            },
-            {
-                id: 'qiaole', author: '巧樂', title: 'AI 英文自學影音平台', icon: '📚',
-                link: 'https://sites.google.com/view/english-self-studying-with-joy/home?authuser=0',
-                desc: '打造概念類似 VoiceTube 的英文自學網站。只要給定 YouTube 影片，AI 即可生成單字、聽力、寫作等練習區塊。更結合 GAS 建立資料庫，讓網站具備進度條功能，完整儲存學生的練習紀錄。'
-            },
-            {
-                id: 'yun', author: '暈船仔', title: '電車難題互動遊戲', icon: '🚋',
-                link: 'https://service-977575129682.asia-east1.run.app/',
-                desc: '本作品透過網頁互動技術，將經典的「電車難題」思想實驗數位化。玩家將面臨各種道德兩難的抉擇，旨在引發使用者對於倫理、價值觀的深度思辨，並在遊戲結束後提供反思與交流的契機。'
-            }
+            { id: 'jing', author: '晶晶', title: '英文互動教學鷹架與遊戲', icon: '🎮', link: 'https://padlet.com/mlvsmlc/20260629-ai-column-b9ov1sbzl16ugf01', desc: '運用 AI 輔助設計的英文科教案、學習鷹架與互動式小遊戲。將課文內容與語法餵給 AI，生成海洋主題對話或校刊專訪改錯等互動遊戲，並成功將傳統紙本學習單轉化為可互動的網頁。' },
+            { id: 'miao', author: '妙妙', title: '航海米茶號：生涯探索遊戲', icon: '⛵', link: 'https://service-374180143495.asia-south1.run.app/', desc: '與學校生涯老師合作開發的航海主題「生涯探索遊戲」。玩家搭乘代表 Life 的「米茶號」，透過登陸對應創造、挑戰、連結、發現、實踐等面向的島嶼並做出選擇，深度探索個人興趣與特質。' },
+            { id: 'qiaole', author: '巧樂', title: 'AI 英文自學影音平台', icon: '📚', link: 'https://sites.google.com/view/english-self-studying-with-joy/home?authuser=0', desc: '打造概念類似 VoiceTube 的英文自學網站。只要給定 YouTube 影片，AI 即可生成單字、聽力、寫作等練習區塊。更結合 GAS 建立資料庫，讓網站具備進度條功能，完整儲存學生的練習紀錄。' },
+            { id: 'yun', author: '暈船仔', title: '電車難題互動遊戲', icon: '🚋', link: 'https://service-977575129682.asia-east1.run.app/', desc: '本作品透過網頁互動技術，將經典的「電車難題」思想實驗數位化。玩家將面臨各種道德兩難的抉擇，旨在引發使用者對於倫理、價值觀的深度思辨，並在遊戲結束後提供反思與交流的契機。' }
         ];
 
-        // --- 1. 渲染卡片 ---
         const container = document.getElementById('project-container');
         const modal = document.getElementById('modal');
         const closeModalBtn = document.getElementById('close-modal');
@@ -259,7 +144,6 @@
                 <div class="card-author">創作者：${project.author}</div>
                 <div class="card-desc">${project.desc}</div>
             `;
-            
             card.addEventListener('click', () => {
                 document.getElementById('modal-title').innerText = project.title;
                 document.getElementById('modal-author').innerText = `創作者：${project.author}`;
@@ -273,32 +157,72 @@
         closeModalBtn.addEventListener('click', () => modal.style.display = 'none');
         modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
 
-        // --- 2. 迎賓表單解鎖邏輯 ---
+        // ==========================================
+        // ⚠️ 請在這裡貼上你剛剛部署的 GAS 網址
+        const GAS_URL = '你的_GAS_網頁應用程式網址_請貼在這裡'; 
+        // ==========================================
+
         const unlockForm = document.getElementById('unlock-form');
         const welcomeGate = document.getElementById('welcome-gate');
+        const unlockBtn = unlockForm.querySelector('.btn-submit');
         
         unlockForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
-            // 未來如果需要，可以抓取這裡的資料送出到試算表
             const tools = document.getElementById('digitalTools').value;
             const aiUsage = document.getElementById('aiUsage').value;
             
-            alert(`收到您的回饋！成果展已為您解鎖，請盡情探索！`);
-            
-            // 隱藏迎賓表單，顯示作品卡片
-            welcomeGate.style.display = 'none';
-            container.style.display = 'grid'; 
+            unlockBtn.innerText = '解鎖中...';
+            unlockBtn.disabled = true;
+
+            fetch(GAS_URL, {
+                method: 'POST',
+                body: JSON.stringify({ formType: 'unlock', digitalTools: tools, aiUsage: aiUsage })
+            }).then(res => res.json()).then(data => {
+                alert(`收到！成果展已為您解鎖，請盡情探索！`);
+                welcomeGate.style.display = 'none'; container.style.display = 'grid'; 
+            }).catch(err => {
+                alert('網路好像有點狀況，但還是先為您解鎖！');
+                welcomeGate.style.display = 'none'; container.style.display = 'grid'; 
+            });
         });
 
-        // --- 3. 體驗後表單模擬 (給作者的回饋) ---
         const form = document.getElementById('interaction-form');
+        const feedbackBtn = form.querySelector('.btn-submit');
+
         form.addEventListener('submit', (e) => {
             e.preventDefault();
+            const currentTitle = document.getElementById('modal-title').innerText;
+            const currentAuthor = document.getElementById('modal-author').innerText.replace('創作者：', '');
             const userName = document.getElementById('userName').value;
-            alert(`謝謝 ${userName} 的回饋！您的建議將會成為創作者前進的動力。\n（之後會接上 GAS 送進試算表）`);
-            form.reset();
-            modal.style.display = 'none';
+            
+            // 抓取 WLPA 欄位資料
+            const well = document.getElementById('well').value;
+            const lessWell = document.getElementById('lessWell').value;
+            const puzzle = document.getElementById('puzzle').value;
+            const action = document.getElementById('action').value;
+
+            feedbackBtn.innerText = '傳送航海日誌中...';
+            feedbackBtn.disabled = true;
+
+            fetch(GAS_URL, {
+                method: 'POST',
+                body: JSON.stringify({
+                    formType: 'feedback',
+                    title: currentTitle,
+                    author: currentAuthor,
+                    userName: userName,
+                    well: well,
+                    lessWell: lessWell,
+                    puzzle: puzzle,
+                    action: action
+                })
+            }).then(res => res.json()).then(data => {
+                if(data.result === 'success'){
+                    alert(`謝謝 ${userName} 的 WLPA 復盤！您的珍貴建議已傳達給 ${currentAuthor}！`);
+                    form.reset(); modal.style.display = 'none';
+                } else { alert('傳送失敗，請稍後再試。'); }
+            }).catch(err => { alert('連線發生錯誤，請檢查網路狀態！');
+            }).finally(() => { feedbackBtn.innerText = '送出 WLPA 復盤給作者'; feedbackBtn.disabled = false; });
         });
     </script>
 </body>
