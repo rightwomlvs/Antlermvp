@@ -68,6 +68,7 @@
         <p>探索本季學員的 MVP 專案與開發心得</p>
     </header>
 
+    <!-- 迎賓解鎖表單 -->
     <div id="welcome-gate">
         <h2>👋 歡迎來到成果展</h2>
         <p>在開始探索之前，想先了解一下您的數位使用習慣，讓我們交流時更有共鳴！</p>
@@ -84,8 +85,10 @@
         </form>
     </div>
 
+    <!-- 卡片展示區 -->
     <div class="container" id="project-container"></div>
 
+    <!-- 彈出視窗 (Modal) -->
     <div class="modal-overlay" id="modal">
         <div class="modal-content">
             <button class="close-btn" id="close-modal">&times;</button>
@@ -94,6 +97,7 @@
             <p id="modal-desc" style="line-height: 1.6; color: #555;">作品詳細描述</p>
             <a href="#" target="_blank" class="btn-visit" id="modal-link">前往體驗作品 &rarr;</a>
 
+            <!-- WLPA 體驗後回饋表單 -->
             <div class="feedback-form">
                 <h3>💡 體驗後交流與回饋 (WLPA 復盤)</h3>
                 <form id="interaction-form">
@@ -113,9 +117,10 @@
                         <label for="puzzle">🤔 Puzzle (難點/疑惑)</label>
                         <textarea id="puzzle" rows="2" placeholder="體驗過程中，有遇到什麼卡關或困惑嗎？"></textarea>
                     </div>
+                    <!-- 💡 更新：Action 欄位引導文字與高度 -->
                     <div class="form-group">
                         <label for="action">🚀 Action (行動建議)</label>
-                        <textarea id="action" rows="2" placeholder="對創作者下一步迭代有什麼具體建議？"></textarea>
+                        <textarea id="action" rows="3" placeholder="對創作者有什麼具體建議？或是這項作品啟發了您自己的什麼下一步行動（例如：我打算把它應用在...）？"></textarea>
                     </div>
                     <button type="submit" class="btn-submit">送出 WLPA 復盤給作者</button>
                 </form>
