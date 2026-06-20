@@ -7,14 +7,14 @@
     <style>
         /* 基礎設定 & 鹿角綠色系主題 */
         :root {
-            --primary-bg: #f4f7f4; /* 帶有一點點極淺綠的背景 */
-            --header-bg: #ffffff;  /* 頁首白底以凸顯 Logo */
-            --header-text: #2b5d2a; /* Logo 的深森林綠 */
+            --primary-bg: #f4f7f4; 
+            --header-bg: #ffffff;  
+            --header-text: #2b5d2a; 
             --card-bg: #ffffff;
             --text-main: #333333;
             --text-muted: #666666;
-            --accent-color: #2b5d2a; /* 按鈕與強調色使用深綠 */
-            --accent-hover: #52a856; /* 懸停時使用 Logo 方塊的淺綠色 */
+            --accent-color: #2b5d2a; 
+            --accent-hover: #52a856; 
             --border-radius: 12px;
         }
         body {
@@ -30,13 +30,13 @@
             color: var(--header-text);
             text-align: center;
             padding: 50px 20px 40px;
-            box-shadow: 0 4px 15px rgba(43, 93, 42, 0.08); /* 微微的綠色陰影 */
+            box-shadow: 0 4px 15px rgba(43, 93, 42, 0.08); 
             display: flex;
             flex-direction: column;
             align-items: center;
         }
         .header-logo {
-            width: 140px; /* 調整 Logo 寬度 */
+            width: 140px; 
             height: auto;
             margin-bottom: 20px;
         }
@@ -47,21 +47,50 @@
             font-weight: 800;
         }
         header p {
-            color: #637b64; /* 融合綠色的副標題 */
+            color: #637b64; 
             margin-top: 12px;
             font-size: 1.1rem;
             font-weight: 500;
         }
 
-        /* 卡片網格區塊 */
+        /* 迎賓解鎖表單區塊 (Gatekeeper) */
+        #welcome-gate {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 32px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 25px rgba(43, 93, 42, 0.15);
+            text-align: center;
+            border-top: 5px solid var(--accent-color);
+        }
+        #welcome-gate h2 {
+            color: var(--header-text);
+            margin-top: 0;
+        }
+        #welcome-gate p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        /* 卡片網格區塊 (預設隱藏) */
         .container {
             max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
-            display: grid;
+            display: none; 
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
+            animation: fadeIn 0.8s ease-in-out; 
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 原本的卡片樣式 */
         .card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
@@ -75,124 +104,58 @@
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(43, 93, 42, 0.15);
-            border: 2px solid var(--accent-hover); /* 懸停時出現淺綠邊框 */
+            border: 2px solid var(--accent-hover); 
         }
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 16px;
-        }
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: var(--header-text);
-        }
-        .card-author {
-            font-size: 0.9rem;
-            color: var(--accent-color);
-            margin-bottom: 12px;
-            font-weight: bold;
-        }
+        .card-icon { font-size: 2.5rem; margin-bottom: 16px; }
+        .card-title { font-size: 1.25rem; font-weight: bold; margin-bottom: 8px; color: var(--header-text); }
+        .card-author { font-size: 0.9rem; color: var(--accent-color); margin-bottom: 12px; font-weight: bold; }
         .card-desc {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 3; /* 只顯示三行 */
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            font-size: 0.95rem; color: var(--text-muted); line-height: 1.5;
+            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
         }
 
         /* 彈出視窗 Modal */
         .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            display: none; /* 預設隱藏 */
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            padding: 20px;
-            box-sizing: border-box;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.6); display: none; justify-content: center; align-items: center;
+            z-index: 1000; padding: 20px; box-sizing: border-box;
         }
         .modal-content {
-            background: white;
-            width: 100%;
-            max-width: 600px;
-            border-radius: var(--border-radius);
-            padding: 32px;
-            position: relative;
-            max-height: 90vh;
-            overflow-y: auto;
+            background: white; width: 100%; max-width: 600px; border-radius: var(--border-radius);
+            padding: 32px; position: relative; max-height: 90vh; overflow-y: auto;
         }
         .close-btn {
-            position: absolute;
-            top: 20px; right: 20px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #999;
-            border: none;
-            background: none;
+            position: absolute; top: 20px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #999; border: none; background: none;
         }
         .close-btn:hover { color: var(--accent-color); }
         .modal-title-text { color: var(--header-text); margin-top: 0; }
 
-        /* Modal 內的按鈕與表單 */
+        /* 按鈕與表單共用樣式 */
         .btn-visit {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            padding: 10px 24px;
-            border-radius: 8px;
-            font-weight: bold;
-            margin-top: 16px;
-            margin-bottom: 28px;
+            display: inline-block; background-color: var(--accent-color); color: white; text-decoration: none;
+            padding: 10px 24px; border-radius: 8px; font-weight: bold; margin-top: 16px; margin-bottom: 28px;
             transition: background 0.2s;
         }
         .btn-visit:hover { background-color: var(--accent-hover); }
         
         .feedback-form {
-            background: var(--primary-bg);
-            padding: 24px;
-            border-radius: 8px;
-            border: 1px solid #d4e0d4;
+            background: var(--primary-bg); padding: 24px; border-radius: 8px; border: 1px solid #d4e0d4; text-align: left;
         }
         .feedback-form h3 { color: var(--header-text); margin-top: 0; }
-        .form-group {
-            margin-bottom: 16px;
-        }
+        .form-group { margin-bottom: 16px; text-align: left; }
         .form-group label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: bold;
-            font-size: 0.95rem;
-            color: var(--text-main);
+            display: block; margin-bottom: 6px; font-weight: bold; font-size: 0.95rem; color: var(--text-main);
         }
         .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-family: inherit;
-            box-sizing: border-box;
-            font-size: 1rem;
+            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit;
+            box-sizing: border-box; font-size: 1rem;
         }
         .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent-hover);
-            box-shadow: 0 0 0 2px rgba(82, 168, 86, 0.2);
+            outline: none; border-color: var(--accent-hover); box-shadow: 0 0 0 2px rgba(82, 168, 86, 0.2);
         }
         .btn-submit {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 1.1rem;
-            font-weight: bold;
+            background-color: var(--accent-color); color: white; border: none; padding: 12px 20px;
+            border-radius: 6px; cursor: pointer; width: 100%; font-size: 1.1rem; font-weight: bold;
             transition: background 0.2s;
         }
         .btn-submit:hover { background-color: var(--accent-hover); }
@@ -200,15 +163,34 @@
 </head>
 <body>
 
+    <!-- 頂部標題區 -->
     <header>
         <img src="https://drive.google.com/thumbnail?id=1cGeHkoUrIdFwQgBLncQPrpeiA9bQe9i_&sz=w1000" alt="鹿角科技共享圈 Logo" class="header-logo">
         <h1>鹿角科技共享圈 成果展</h1>
-        <p>點擊下方卡片，探索本季學員的 MVP 專案與開發心得</p>
+        <p>探索本季學員的 MVP 專案與開發心得</p>
     </header>
 
-    <div class="container" id="project-container">
-        </div>
+    <!-- 🌟 更新後的迎賓解鎖表單 -->
+    <div id="welcome-gate">
+        <h2>👋 歡迎來到成果展</h2>
+        <p>在開始探索之前，想先了解一下您的數位使用習慣，讓我們交流時更有共鳴！</p>
+        <form id="unlock-form">
+            <div class="form-group">
+                <label for="digitalTools">你常用的數位工具是哪些？</label>
+                <input type="text" id="digitalTools" required placeholder="例如：Notion, Canva, Google Workspace...">
+            </div>
+            <div class="form-group">
+                <label for="aiUsage">最常應用 AI 處理哪些事務？</label>
+                <input type="text" id="aiUsage" required placeholder="例如：發想點子、潤飾文章、整理資料...">
+            </div>
+            <button type="submit" class="btn-submit">解鎖成果展 🚀</button>
+        </form>
+    </div>
 
+    <!-- 卡片展示區 (預設隱藏，解鎖後才會變成 display: grid) -->
+    <div class="container" id="project-container"></div>
+
+    <!-- 彈出視窗 (Modal) - 體驗後的個別回饋表單 -->
     <div class="modal-overlay" id="modal">
         <div class="modal-content">
             <button class="close-btn" id="close-modal">&times;</button>
@@ -217,29 +199,29 @@
             <p id="modal-desc" style="line-height: 1.6; color: #555;">作品詳細描述</p>
             <a href="#" target="_blank" class="btn-visit" id="modal-link">前往體驗作品 &rarr;</a>
 
+            <!-- 體驗後的交流表單 -->
             <div class="feedback-form">
-                <h3>💡 交流與回饋</h3>
+                <h3>💡 體驗後交流與回饋</h3>
                 <form id="interaction-form">
                     <div class="form-group">
                         <label for="userName">您的稱呼 (暱稱可)</label>
                         <input type="text" id="userName" required placeholder="想怎麼稱呼您呢？">
                     </div>
                     <div class="form-group">
-                        <label for="scenario">你會在什麼情境下使用這類工具？</label>
-                        <textarea id="scenario" rows="3" placeholder="例如：在備課時、自主學習時..."></textarea>
+                        <label for="scenario">體驗過後，您覺得會在什麼情境下使用它？</label>
+                        <textarea id="scenario" rows="3" placeholder="例如：在備課時、帶學生實作時..."></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="painpoint">在這方面，你曾遇過什麼痛點希望被解決？</label>
-                        <textarea id="painpoint" rows="3" placeholder="例如：找不到適合的題材、花太多時間排版..."></textarea>
+                        <label for="painpoint">還有什麼未被解決的痛點或優化建議嗎？</label>
+                        <textarea id="painpoint" rows="3" placeholder="例如：希望可以新增...的功能"></textarea>
                     </div>
-                    <button type="submit" class="btn-submit">送出回饋</button>
+                    <button type="submit" class="btn-submit">送出回饋給作者</button>
                 </form>
             </div>
         </div>
     </div>
 
     <script>
-// --- 1. 資料區：學員作品清單 ---
         const projects = [
             {
                 id: 'jing', author: '晶晶', title: '英文互動教學鷹架與遊戲', icon: '🎮',
@@ -263,7 +245,7 @@
             }
         ];
 
-        // --- 2. 渲染卡片 ---
+        // --- 1. 渲染卡片 ---
         const container = document.getElementById('project-container');
         const modal = document.getElementById('modal');
         const closeModalBtn = document.getElementById('close-modal');
@@ -278,7 +260,6 @@
                 <div class="card-desc">${project.desc}</div>
             `;
             
-            // 點擊打開 Modal
             card.addEventListener('click', () => {
                 document.getElementById('modal-title').innerText = project.title;
                 document.getElementById('modal-author').innerText = `創作者：${project.author}`;
@@ -289,16 +270,33 @@
             container.appendChild(card);
         });
 
-        // --- 3. Modal 邏輯 ---
         closeModalBtn.addEventListener('click', () => modal.style.display = 'none');
         modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
 
-        // --- 4. 表單模擬 ---
+        // --- 2. 迎賓表單解鎖邏輯 ---
+        const unlockForm = document.getElementById('unlock-form');
+        const welcomeGate = document.getElementById('welcome-gate');
+        
+        unlockForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // 未來如果需要，可以抓取這裡的資料送出到試算表
+            const tools = document.getElementById('digitalTools').value;
+            const aiUsage = document.getElementById('aiUsage').value;
+            
+            alert(`收到您的回饋！成果展已為您解鎖，請盡情探索！`);
+            
+            // 隱藏迎賓表單，顯示作品卡片
+            welcomeGate.style.display = 'none';
+            container.style.display = 'grid'; 
+        });
+
+        // --- 3. 體驗後表單模擬 (給作者的回饋) ---
         const form = document.getElementById('interaction-form');
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const userName = document.getElementById('userName').value;
-            alert(`謝謝 ${userName} 的回饋！前端介面測試成功。\n下一步我們會把這筆資料寫入 Google 試算表。`);
+            alert(`謝謝 ${userName} 的回饋！您的建議將會成為創作者前進的動力。\n（之後會接上 GAS 送進試算表）`);
             form.reset();
             modal.style.display = 'none';
         });
