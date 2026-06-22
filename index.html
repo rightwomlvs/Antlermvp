@@ -117,7 +117,6 @@
                         <label for="puzzle">🤔 Puzzle (難點/疑惑)</label>
                         <textarea id="puzzle" rows="2" placeholder="體驗過程中，有遇到什麼卡關或困惑嗎？"></textarea>
                     </div>
-                    <!-- 💡 更新：Action 欄位引導文字與高度 -->
                     <div class="form-group">
                         <label for="action">🚀 Action (行動建議)</label>
                         <textarea id="action" rows="3" placeholder="對創作者有什麼具體建議？或是這項作品啟發了您自己的什麼下一步行動（例如：我打算把它應用在...）？"></textarea>
@@ -130,10 +129,56 @@
 
     <script>
         const projects = [
-            { id: 'jing', author: '晶晶', title: '英文互動教學鷹架與遊戲', icon: '🎮', link: 'https://padlet.com/mlvsmlc/20260629-ai-column-b9ov1sbzl16ugf01', desc: '運用 AI 輔助設計的英文科教案、學習鷹架與互動式小遊戲。將課文內容與語法餵給 AI，生成海洋主題對話或校刊專訪改錯等互動遊戲，並成功將傳統紙本學習單轉化為可互動的網頁。' },
-            { id: 'miao', author: '妙妙', title: '航海米茶號：生涯探索遊戲', icon: '⛵', link: 'https://service-374180143495.asia-south1.run.app/', desc: '與學校生涯老師合作開發的航海主題「生涯探索遊戲」。玩家搭乘代表 Life 的「米茶號」，透過登陸對應創造、挑戰、連結、發現、實踐等面向的島嶼並做出選擇，深度探索個人興趣與特質。' },
-            { id: 'qiaole', author: '巧樂', title: 'AI 英文自學影音平台', icon: '📚', link: 'https://sites.google.com/view/english-self-studying-with-joy/home?authuser=0', desc: '打造概念類似 VoiceTube 的英文自學網站。只要給定 YouTube 影片，AI 即可生成單字、聽力、寫作等練習區塊。更結合 GAS 建立資料庫，讓網站具備進度條功能，完整儲存學生的練習紀錄。' },
-            { id: 'yun', author: '暈船仔', title: '電車難題互動遊戲', icon: '🚋', link: 'https://service-977575129682.asia-east1.run.app/', desc: '本作品透過網頁互動技術，將經典的「電車難題」思想實驗數位化。玩家將面臨各種道德兩難的抉擇，旨在引發使用者對於倫理、價值觀的深度思辨，並在遊戲結束後提供反思與交流的契機。' }
+            // 🌟 新增的兩個作品放在最前面
+            { 
+                id: 'shulan', 
+                author: '樹懶', 
+                title: '實用互動抽選器', 
+                icon: '🎲', 
+                link: 'https://service-867116851823.asia-south1.run.app/', 
+                desc: '一款實用且充滿趣味的數位抽選器工具。無論是課堂點名、分組抽籤，或是活動抽獎，都能透過簡單直覺的操作介面快速完成，為教學現場或活動環節增添互動性與驚喜感。' 
+            },
+            { 
+                id: 'xingyu', 
+                author: '星宇', 
+                title: '閱讀推手 (ReadRealm)', 
+                icon: '📖', 
+                link: 'https://starhsu0728.github.io/readrealm/', 
+                desc: '「閱讀推手」是一個致力於推廣閱讀習慣的數位平台。透過精心設計的介面與互動機制，引導使用者探索閱讀的樂趣，並藉由數位化的方式紀錄與分享閱讀心得，打造專屬的閱讀領域。' 
+            },
+            // 原本的作品維持不變
+            { 
+                id: 'jing', 
+                author: '晶晶', 
+                title: '英文互動教學鷹架與遊戲', 
+                icon: '🎮', 
+                link: 'https://padlet.com/mlvsmlc/20260629-ai-column-b9ov1sbzl16ugf01', 
+                desc: '運用 AI 輔助設計的英文科教案、學習鷹架與互動式小遊戲。將課文內容與語法餵給 AI，生成海洋主題對話或校刊專訪改錯等互動遊戲，並成功將傳統紙本學習單轉化為可互動的網頁。' 
+            },
+            { 
+                id: 'miao', 
+                author: '妙妙', 
+                title: '航海米茶號：生涯探索遊戲', 
+                icon: '⛵', 
+                link: 'https://service-374180143495.asia-south1.run.app/', 
+                desc: '與學校生涯老師合作開發的航海主題「生涯探索遊戲」。玩家搭乘代表 Life 的「米茶號」，透過登陸對應創造、挑戰、連結、發現、實踐等面向的島嶼並做出選擇，深度探索個人興趣與特質。' 
+            },
+            { 
+                id: 'qiaole', 
+                author: '巧樂', 
+                title: 'AI 英文自學影音平台', 
+                icon: '📚', 
+                link: 'https://sites.google.com/view/english-self-studying-with-joy/home?authuser=0', 
+                desc: '打造概念類似 VoiceTube 的英文自學網站。只要給定 YouTube 影片，AI 即可生成單字、聽力、寫作等練習區塊。更結合 GAS 建立資料庫，讓網站具備進度條功能，完整儲存學生的練習紀錄。' 
+            },
+            { 
+                id: 'yun', 
+                author: '暈船仔', 
+                title: '電車難題互動遊戲', 
+                icon: '🚋', 
+                link: 'https://service-977575129682.asia-east1.run.app/', 
+                desc: '本作品透過網頁互動技術，將經典的「電車難題」思想實驗數位化。玩家將面臨各種道德兩難的抉擇，旨在引發使用者對於倫理、價值觀的深度思辨，並在遊戲結束後提供反思與交流的契機。' 
+            }
         ];
 
         const container = document.getElementById('project-container');
