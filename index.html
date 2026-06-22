@@ -68,7 +68,6 @@
         <p>探索本季學員的 MVP 專案與開發心得</p>
     </header>
 
-    <!-- 迎賓解鎖表單 -->
     <div id="welcome-gate">
         <h2>👋 歡迎來到成果展</h2>
         <p>在開始探索之前，想先了解一下您的數位使用習慣，讓我們交流時更有共鳴！</p>
@@ -85,10 +84,8 @@
         </form>
     </div>
 
-    <!-- 卡片展示區 -->
     <div class="container" id="project-container"></div>
 
-    <!-- 彈出視窗 (Modal) -->
     <div class="modal-overlay" id="modal">
         <div class="modal-content">
             <button class="close-btn" id="close-modal">&times;</button>
@@ -97,7 +94,6 @@
             <p id="modal-desc" style="line-height: 1.6; color: #555;">作品詳細描述</p>
             <a href="#" target="_blank" class="btn-visit" id="modal-link">前往體驗作品 &rarr;</a>
 
-            <!-- WLPA 體驗後回饋表單 -->
             <div class="feedback-form">
                 <h3>💡 體驗後交流與回饋 (WLPA 復盤)</h3>
                 <form id="interaction-form">
@@ -129,14 +125,14 @@
 
     <script>
         const projects = [
-            // 🌟 新增的兩個作品放在最前面
+            // 🌟 更新：樹懶的作品描述
             { 
                 id: 'shulan', 
                 author: '樹懶', 
-                title: '實用互動抽選器', 
+                title: '遊戲隊友抽選器', 
                 icon: '🎲', 
                 link: 'https://service-867116851823.asia-south1.run.app/', 
-                desc: '一款實用且充滿趣味的數位抽選器工具。無論是課堂點名、分組抽籤，或是活動抽獎，都能透過簡單直覺的操作介面快速完成，為教學現場或活動環節增添互動性與驚喜感。' 
+                desc: '開發了一款純單機版的「遊戲隊友抽選器」。玩家可以隨意新增隊友，並勾選每個人想挑戰的副本，所有數據都會自動安全地儲存在本地瀏覽器中。左側看板還會即時加總全體隊友的副本需求度，是組隊打怪的絕佳小幫手！' 
             },
             { 
                 id: 'xingyu', 
@@ -146,7 +142,6 @@
                 link: 'https://starhsu0728.github.io/readrealm/', 
                 desc: '「閱讀推手」是一個致力於推廣閱讀習慣的數位平台。透過精心設計的介面與互動機制，引導使用者探索閱讀的樂趣，並藉由數位化的方式紀錄與分享閱讀心得，打造專屬的閱讀領域。' 
             },
-            // 原本的作品維持不變
             { 
                 id: 'jing', 
                 author: '晶晶', 
@@ -245,7 +240,6 @@
             const currentAuthor = document.getElementById('modal-author').innerText.replace('創作者：', '');
             const userName = document.getElementById('userName').value;
             
-            // 抓取 WLPA 欄位資料
             const well = document.getElementById('well').value;
             const lessWell = document.getElementById('lessWell').value;
             const puzzle = document.getElementById('puzzle').value;
